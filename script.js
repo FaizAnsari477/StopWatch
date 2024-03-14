@@ -1,0 +1,58 @@
+let milli = 0;
+let sec = 0;
+let min = 0;
+let hr = 0;
+
+let timer = false;
+
+function start() {
+    timer = true;
+    myFun();
+}
+function stop() {
+    timer = false;
+    myFun();
+}
+function reset() {
+    location.reload();
+}
+
+function myFun() {
+    if (timer == true) {
+        milli += 1;
+        if (milli == 100) {
+            sec += 1;
+            milli = 0;
+        }
+        if (sec == 60) {
+            min += 1;
+            sec = 0;
+        }
+        if (min == 60) {
+            hr += 1;
+            min = 0;
+        }
+        let getMilli = milli;
+        let getSec = sec;
+        let getMin = min;
+        let getHr = hr;
+
+        if (getMilli < 10) {
+            getMilli = "0" + milli;
+        }
+        if (getSec < 10) {
+            getSec = "0" + sec;
+        }
+        if (getMin < 10) {
+            getMin = "0" + min;
+        }
+        if (getHr < 10) {
+            getHr = "0" + hr;
+        }
+        setTimeout('myFun()', 10)
+        document.getElementById("milli").innerHTML = getMilli;
+        document.getElementById("sec").innerHTML = getSec;
+        document.getElementById("min").innerHTML = getMin;
+        document.getElementById("hr").innerHTML = getHr;
+    }
+}
